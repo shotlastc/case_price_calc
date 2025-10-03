@@ -1,4 +1,4 @@
-from constants import Currency
+from src.constants import Currency
 
 import asyncio
 import requests
@@ -20,9 +20,12 @@ class Case:
         self.item_id = item_id
 
     def get_price(self):
-        url = f'https://steamcommunity.com/market/itemordershistogram?country=UA&language=english&currency={Currency.UAH}&item_nameid={self.item_id}'
+        url = f'https://steamcommunity.com/market/itemordershistogram?country=UA&language=english&currency={Currency.UAH.value}&item_nameid={self.item_id}'
         result = requests.get(url=url)
         result = result.json()
-        price: list = result.get('buy_order_graph')
+        price = result.get('buy_order_graph')
         self.price = price[0][0]
-        print(price[0][0])
+        return price[0][0]
+
+    def get_data(self):
+        return [self.name, self.price]

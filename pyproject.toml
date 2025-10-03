@@ -10,10 +10,19 @@ requires-python = ">=3.13"
 dependencies = [
     "dearpygui (>=2.1.0,<3.0.0)",
     "pydantic (>=2.11.9,<3.0.0)",
-    "requests (>=2.32.5,<3.0.0)"
+    "requests (>=2.32.5,<3.0.0)",
+    "cx-freeze (>=8.4.1,<9.0.0)"
 ]
 
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.cxfreeze]
+executables = [
+    { script = "src/main.py", target_name = "calculator.exe" }
+]
+
+[tool.cxfreeze.build_exe]
+packages = ["dearpygui"]
