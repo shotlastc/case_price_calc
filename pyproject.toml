@@ -21,7 +21,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.cxfreeze]
 executables = [
-    { script = "src/main.py", target_name = "calculator.exe" }
+    { script = "src/main.py", target_name = "calculator.exe", base="Win32GUI" }
 ]
 
 [tool.cxfreeze.build_exe]
